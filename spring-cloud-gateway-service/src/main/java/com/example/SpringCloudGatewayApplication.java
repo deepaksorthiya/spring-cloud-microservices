@@ -27,11 +27,23 @@ public class SpringCloudGatewayApplication {
 	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
 		return builder.routes()
 		// @formatter:off
-        		.route("car-service", r -> r.path("/cars/**")
-                        .filters(f -> f.hystrix(c -> c.setName("carsFallback")
-                        .setFallbackUri("forward:/cars-fallback")))
-                        .uri("lb://car-service"))
-        		// @formatter:on
+		.route("car-service", r -> r.path("/cars/**")
+                .filters(f -> f.hystrix(c -> c.setName("carsFallback")
+                .setFallbackUri("forward:/cars-fallback")))
+                .uri("lb://car-service"))
+		.route("organization-service", r -> r.path("/organizations/**")
+                .filters(f -> f.hystrix(c -> c.setName("carsFallback")
+                .setFallbackUri("forward:/cars-fallback")))
+                .uri("lb://organization-service"))
+		.route("department-service", r -> r.path("/departments/**")
+                .filters(f -> f.hystrix(c -> c.setName("carsFallback")
+                .setFallbackUri("forward:/cars-fallback")))
+                .uri("lb://department-service"))
+		.route("employee-service", r -> r.path("/employees/**")
+                .filters(f -> f.hystrix(c -> c.setName("carsFallback")
+                .setFallbackUri("forward:/cars-fallback")))
+                .uri("lb://employee-service"))
+		// @formatter:on
 				.build();
 	}
 
