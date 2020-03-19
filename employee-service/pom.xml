@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>organization-service</artifactId>
+	<artifactId>employee-service</artifactId>
 	<version>1.0.0</version>
-	<name>organization-service</name>
-	<description>Demo project for Spring Boot Cloud Organization Service </description>
+	<name>employee-service</name>
+	<description>Demo project for Spring Boot Cloud Employee Service </description>
 
 	<properties>
 		<java.version>1.8</java.version>
