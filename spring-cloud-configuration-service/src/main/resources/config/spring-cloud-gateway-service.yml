@@ -9,3 +9,19 @@ management:
     web:
       exposure:
         include: '*'
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
+          predicates:
+            - name: Path
+              args:
+                pattern: "'/api/'+serviceId.toLowerCase()+'/**'"
+          filters:
+            - name: OrderedRewritePath
+              args:
+                regexp: "'/api/' + serviceId.toLowerCase() + '/(?<remaining>.*)'"
+                replacement: "{metadata.get('contextPath') != null ? metadata.get('contextPath') : ''} + '/${remaining}'"
